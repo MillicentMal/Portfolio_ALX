@@ -91,24 +91,27 @@ def login():
             else:
                 
                 flash(f'Incorrect password')
-                return redirect(url_for('reset_password'))
+                return redirect(url_for('reset'))
             
         return redirect(url_for('signup'))
     return render_template('login.html')
 
 @app.route('/reset_password', methods=['GET', 'POST'])
-def reset(id):
-    form = Reset()
-    user =  User.query.filter_by(username=form.username.data).first()
-    if user:
-        try:
-            hashed_password = bcrypt.generate_password_hash(form.password.data)
-            user.password = hashed_password
-            db.session.commit()
-            flash(f'Password reset successful')
-            return redirect(url_for('login'))
-        except:
-            flash(f"Your request failed")
+def reset():
+    form = Reset(request.form)
+    if request.method == 'POST':
+        user =  User.query.filter_by(username=form.username.data).first()
+        if user:
+            try:
+                hashed_password = bcrypt.generate_password_hash(form.password.data)
+                user.password = hashed_password
+                db.session.commit()
+                flash(f'Password reset successful')
+                return redirect(url_for('login'))
+            except:
+                return "<h1>Your password reset failed</h1>"
+        "<h1>Your account doesnt exist</h1>"
+        return redirect(url_for('signup'))
     return render_template('reset_password.html', form=form)
 
 @app.route('/logout')
