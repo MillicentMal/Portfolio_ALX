@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sellers.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
+    {% endblock %}
+    <title>SELLERS BAY</title>
+</head>
+<body>
+
+    {% block content%}
+    <header>
+        <nav>
+    <a href="{{url_for('index')}}">HOME</a>
+    <a href="{{url_for('home')}}">SELL</a>
+    <a href="{{url_for('home')}}">EXPLORE</a>
+    <a href="{{url_for('account')}}">ACCOUNT</a>
+    <a href="{{url_for('logout')}}">LOGOUT</a>
+    
+</nav>
+</header>
+
+
+
+    <form method="POST">
+        {{ form.hidden_tag }}
+        <label for=""> {{ form.name.label }}</label>
+        {{ form.name }}
+        <label for=""> {{ form.price.label }}</label>
+        {{ form.price }}
+        <label for=""> {{ form.description.label }}</label>
+        {{ form.description }}
+        {{form.submit}}
+        </form>
+    </div>
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>
+            {{ message }}
+        </li>
+        {% endfor %} 
+    </ul>
+    {% endif %}
+    {% endwith %} 
+    {% endblock %}
+ <footer>
+   
+   
+      <p class="trademark">
+       Ubwiza -  Where beauty meets innovation  &#174; 
+      </p>
+</footer>
+</body>
+</html>

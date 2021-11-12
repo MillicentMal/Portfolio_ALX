@@ -1,0 +1,156 @@
+
+body {
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Indie Flower', cursive;
+font-family: 'Lato', sans-serif;
+}
+main {
+    background-color:  rgba(165, 0, 255, 0.1);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 2em;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+.service {
+display: flex;
+flex-direction:column;
+
+font-family: 'Indie Flower', cursive;
+/* font-family: 'Lato', sans-serif; */
+    font-weight: 900;
+   text-align: center;
+    width: 20em;
+    max-height: fit-content;
+    color:purple;
+    border-style: none;
+    background-color: rgba(165, 0, 255, 0.2);
+    justify-self: center;
+}  
+input {
+    display: block;
+
+}   
+#btn {
+    font-weight: inherit;
+    border: none;
+    color: inherit;
+    background-color: inherit;
+    font-family: inherit;
+}
+.hidden{
+/* display: none;     */
+width: 50%;
+align-self: center;
+
+
+}
+.w-100{
+    width: 50;
+  }
+  
+  .mb-10{
+    margin-bottom: 10px;
+  }
+  
+body {
+    position: relative;
+}
+
+
+footer {
+    display: flex;
+    color: purple;
+    font-weight: 900;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(165, 0, 255, 0.2);
+    position: absolute;
+    height: 10vh;
+    max-height:max-content;
+    bottom: 0%;
+    top: 100%;
+    width: 100vw;
+ 
+}
+#show {
+    display: none;
+}    
+.hide {
+    background-color: rgba(165, 0, 255, 0.2);
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* width: 100vw;
+    height: 100vh; */
+    align-content: center;
+    position: absolute;
+    top:20%;
+    right: 30%;
+    left: 30%;
+}
+header {
+    color: purple;
+    width: 100%;
+    grid-column: 1/span 3;
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    justify-content: space-around;
+    margin-right: 3em;
+    background-color: rgba(165, 0, 255, 0.2);
+    
+   
+}
+nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-evenly;
+    font-weight: 900;
+    
+
+    
+}
+.work_name {
+    padding-top: 10%;
+    padding-left: 2%;
+}
+a {
+    text-decoration: none;
+    color: purple;
+    border-radius: 2em;
+    border: white solid 1px;
+    padding: 10px;
+}
+
+
+
+.description {
+    width: 80%;
+    justify-self: center;
+    height: 50%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+  
+
+
+}
+#btn {
+    width: fit-content;
+    align-self: center;
+}
+
+.service > img:hover
+ {
+     width: 30vw;
+
+}

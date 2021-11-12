@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+</head>
+<body>
+    <header>
+        
+       
+           
+            <a href="{{url_for('login')}}">LOGIN</a>
+            <a href="{{url_for('sellers')}}">SELL</a>
+            <a href="{{url_for('home')}}">EXPLORE</a>
+       
+
+    </header>
+    <br>
+
+    <main>
+        
+            <div class="intro-inner">        
+                <div>
+              <h1>
+                  Our Mission
+              </h1>
+               <p class="p1">
+                Our mission is to link our users to affordable but quality services in the beauty industry. 
+                               
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea illum corporis, cum voluptatem in, soluta, nam iusto vitae eum et sint fuga porro consequatur omnis labore temporibus dignissimos dolorum amet.
+               </p>
+                <button class="shop"><a href="{{url_for('home')}}">EXPLORE</a></button>
+            </div> 
+            <div>
+                <img class="top" src="{{url_for('static', filename='images/connecting.svg')}}" alt="Connecting teams">
+            </div>
+
+            </div>
+
+     
+
+
+        <div class="about">
+            <div class="left">
+                <img src="{{url_for('static', filename='images/undraw_happy_2021_h01d.svg')}}" alt="Connecting teams"> 
+            </div> 
+            <div class="right">
+            
+                    <p>
+                    Founded in August 2021, Ubiza seeks to give women and men the city of Kigali's beauty industry service providers in their finger tips. 
+
+                </p>
+                <p>
+                    We strive in connecting our customers to every service provider in Kigali, along with prices reducing the risk of being overcharged and mistreated. 
+                </p>
+       </div>
+      
+        </div>
+
+<br>
+        <div class="offers">
+            <h1>
+                WHAT WE OFFER
+            </h1>
+            <div class="offers-explore">
+                <h1>
+                    EXPLORE
+                </h1>
+            <div>
+                <img src="{{url_for('static', filename='images/multiple_profiles.svg')}}" alt="Sellers"> 
+                <FIGcaption>
+                    As long as you have an account you can view all our available service providers
+                </FIGcaption>
+                <ul>
+                    <li>
+                        Nail Artists
+                    </li>
+                    <li>
+                        Hair stylists
+                    </li>
+                    <li>
+                        Makeup Artists
+                    </li>
+                </ul>
+                   
+            </div>
+
+            <div>
+                <h1>
+                    GROW YOUR BUSINESS
+                </h1>
+                <img src="{{url_for('static', filename='images/seller.svg')}}" alt="Sellers"> 
+                <FIGcaption>
+                    Show off your previous work and get clients. 
+                </FIGcaption>
+
+            </div>
+    </div>
+
+<br>
+<div class="contact">
+    <div>  
+        <div class="bottom" id="bottom">
+    
+           <a href="{{url_for('index')}}"><h1>
+            Back to top
+           </h1></a> 
+          
+        <p>
+            Where beauty meets innovation
+        </p> 
+      
+        
+        </div>
+    </main>
+
+</body>
+</html>

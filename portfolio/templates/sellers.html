@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sellers.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
+    {% endblock %}
+    <title>SELLERS BAY</title>
+</head>
+<body>
+
+    {% block content%}
+    <header>
+        <nav>
+    <a href="{{url_for('index')}}">HOME</a>
+    <a href="{{url_for('add_product')}}">ADD WORK</a>
+    <a href="{{url_for('home')}}">EXPLORE</a>
+    <a href="{{url_for('account')}}">ACCOUNT</a>
+    <a href="{{url_for('logout')}}">LOGOUT</a>
+</nav>
+</header>
+<main>
+    {% if seller.folder %}
+    {% for works in work %}
+    <div class="service">
+        <img id="pic" class="hidden w-100" src="{{ url_for('static', filename='uploads/' + seller.name + '/'+ works.img ) }}" alt="image">
+        
+  
+
+      <p class="work_name">
+        Service: {{ works.name }}
+      </p> 
+      <div>
+        <p class="seller">
+            Seller: {{ seller.name }}
+          </p> 
+          <p>
+            Call: {{ seller.phone }}
+          </p> 
+      </div>
+      
+        <p class="price"> Price: {{ works.price }} RWF </p>
+    <div class='description'>
+        {{ works.description }}
+    
+    </div>
+    
+    <a class="ui blue button" href="/update_work/{{works.id}}">Update</a>
+    <a class="ui red button" href="/delete/{{ works.id }}">Delete</a>
+    </div>
+        
+        
+    
+    {% endfor %} 
+    {% endif %} 
+</main> 
+{% endblock %}
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>
+            {{ message }}
+        </li>
+        {% endfor %} 
+    </ul>
+    {% endif %}
+    {% endwith %} 
+
+ <footer>
+   
+   
+      <p class="trademark">
+       Ubwiza -  Where beauty meets innovation  &#174; 
+      </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: purple;
+    display: grid;
+    grid-template-columns: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+main {
+    display: grid;
+
+}
+
+img {
+    max-width: 50%;
+    grid-column: 3;
+}
+
+form {
+    background-color: rgba(165, 0, 255, 0.2);
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 75vh;
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+input {
+ 
+    height: 2em;
+    width: 10em;
+    max-width: fit-content;
+    margin-bottom: 2em;
+    border: solid white;
+    
+}
+
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+.submit {
+    color: white;
+    border-style: none;
+    background-color: purple;
+    justify-self: center;
+    text-align: center;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+h1 {
+    color: purple;
+    justify-self: center;
+}
+
+
+header {
+    
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(165, 0, 255, 0.2);
+}
+
+
+a {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    color: purple;
+    font-weight: 900;
+    text-decoration: none;
+
+}

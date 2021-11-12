@@ -1,0 +1,148 @@
+/* @media screen and (min-width: 300px) {    
+
+body {
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    font-weight: 300;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+   
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: space-evenly;
+    margin-right: 3em;
+    border-radius: 2em;
+    background-color:rgba(165, 0, 255, 0.2);
+    color: purple;
+    
+    
+   
+}
+button {
+    background-color: white;
+    border-style: none;
+    border-radius: 2em;
+    height: 50px;
+    width: 100px;
+    
+ 
+}
+
+h1 {
+   color: purple;
+}
+a {
+
+    text-decoration: none;
+    color: purple;
+    font-family: sans-serif;
+    font-weight: bolder;
+    
+
+}
+
+} */
+
+@media screen and (min-width: 700px) {
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: purple;
+            font-weight: 400;
+            display: grid;
+            grid-template-rows:auto;
+            justify-content: space-between;
+            background-color: white;
+           
+        }
+        
+        header {
+            
+            width: 100%;
+            display: flex;
+            background-color: rgba(165, 0, 255, 0.2);
+            height: 10vh;
+            justify-content: space-around;
+                      
+           
+        }
+      
+
+        ul > li {
+            list-style: none;
+        }
+        button {
+            background-color: white;
+            border-style: none;
+            border-radius: 2em;
+            height: 50px;
+            width: 100px;
+            
+         
+        }
+        
+        h1 {
+           color: purple;
+        }
+
+
+        a {
+            padding-top: 20px;
+            text-decoration: none;
+            color: purple;
+
+            font-family: sans-serif;
+            font-weight: bolder;
+            
+        
+        }
+        main {
+            background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) );
+          border-radius: 1em;
+            display: grid;
+            grid-template-rows:repeat(4, 1fr);
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+        }
+    .contact {
+        
+        justify-self: center;
+
+    }
+
+    .left > img {
+        max-width: 50%;
+    }
+    .about {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+     .bottom {
+         
+         border-top-style: solid purple;
+    
+
+     }  
+     div {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-evenly;
+     }
+     img {
+         width: 50%;
+     }
+
+    .intro_inner {
+        display: inline-flex;
+    }
+    }
+    

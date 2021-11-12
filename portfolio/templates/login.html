@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <header>
+        <h1>
+           
+     
+        UBWIZA
+    </h1>
+    <a href="{{url_for('index')}}">Learn More about Ubwiza</a>   
+    <a href="{{url_for('sellers')}}">SELL</a>
+    <a href="{{url_for('home')}}">EXPLORE</a>
+    </header>
+   
+    <main>
+        <article>
+<!-- <div>
+    <img src="{{url_for('static', filename='images/login.svg')}}" alt="REGISTER">
+</div> -->
+    <form action="/login" method="POST">
+        <h1>
+            Login
+        </h1>
+    Username <input type="text" name="username">
+    Password <input type="password" name="password">
+    
+     <input type="submit" value="Login">
+     <a href="{{url_for('signup')}}">Dont have an account? Sign Up</a>
+    </form>
+    
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    <div class="flashes">
+        {% for message in messages %}
+        <div>
+            {{ message }}
+        </div>
+        {% endfor %} 
+    </div>
+    {% endif %}
+    {% endwith %} 
+    <img src="{{url_for('static', filename='images/joinus.svg')}}" alt="REGISTER">
+    
+</article>
+ <aside>
+
+ </aside>
+
+
+</main>
+</body>
+</html>
