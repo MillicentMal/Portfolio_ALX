@@ -89,14 +89,27 @@ def login():
                 login_user(user)
                 return redirect(url_for('home'))
             else:
-                flash(f'Incorrect password. You might have to recreate you account. No password reset here.')
-                return redirect(url_for('login'))
-
-
+                
+                flash(f'Incorrect password')
+                return redirect(url_for('reset_password'))
+            
         return redirect(url_for('signup'))
     return render_template('login.html')
 
-
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset(id):
+    form = Reset()
+    user =  User.query.filter_by(username=form.username.data).first()
+    if user:
+        try:
+            hashed_password = bcrypt.generate_password_hash(form.password.data)
+            user.password = hashed_password
+            db.session.commit()
+            flash(f'Password reset successful')
+            return redirect(url_for('login'))
+        except:
+            flash(f"Your request failed")
+    return render_template('reset_password.html', form=form)
 
 @app.route('/logout')
 @login_required
@@ -269,8 +282,15 @@ class EditProfileForm(Form):
     name = StringField('Name',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
     email = EmailField('Email',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
     username = StringField('Username',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    password = PasswordField('password',  validators=[validators.input_required()])
     submit = SubmitField("Update Account Details")
+
+class Reset(Form):
+    username = StringField('Username',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
+    password = PasswordField('password',  validators=[validators.input_required()])
+    confirm= PasswordField('Confirm',  validators=[validators.input_required(), validators.Length(min=1, max=50), validators.EqualTo('password',
+                             message="Passwords must match")])
+    submit = SubmitField("RESET")
+    
 class EditProduct(Form):
     name = StringField('Name',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
     price = IntegerField('Price',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
