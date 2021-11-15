@@ -16,14 +16,14 @@ from wtforms.fields.simple import EmailField, SubmitField, FileField
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
 # Secret Key!
 app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Initialize The Database
 db = SQLAlchemy(app)
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 UPLOAD_FOLDER =  'static/uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -331,8 +331,6 @@ class Signup(Form):
     confirm= PasswordField('Confirm',  validators=[validators.input_required(), validators.Length(min=1, max=50), validators.EqualTo('password',
                              message="Passwords must match")])
     submit = SubmitField("Register")
-
-
 
 
 
