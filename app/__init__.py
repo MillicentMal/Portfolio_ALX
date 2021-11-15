@@ -17,7 +17,7 @@ from wtforms.fields.simple import EmailField, SubmitField, FileField
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get['DATABASE_URL']
-os.environ['DATABASE_URL'] = <URL>
+os.environ['DATABASE_URL'] = 'postgresql-pointy-14731'
 # Secret Key!
 app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
