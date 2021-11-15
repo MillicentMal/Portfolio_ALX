@@ -16,7 +16,13 @@ from wtforms.fields.simple import EmailField, SubmitField, FileField
 
 
 app = Flask(__name__)
+<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
+=======
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+
+>>>>>>> 5e5c88162ff0a335addf7d9d40741525eee4c78d
 # Secret Key!
 app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
