@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       {% block styles %}
+ 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
+    {% endblock %}
+    
     <title>Document</title>
 </head>
 <body>
@@ -13,7 +21,7 @@
 
          
         <div>
-            <form method="POST" action="/register">
+            <form  method="POST" action="/register">
                 {{ form.csrf_token }}
                 <label for=""> {{ form.phone.label }}</label>
                 {{ form.phone }}

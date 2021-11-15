@@ -1,0 +1,238 @@
+from app import app 
+from app import bcrypt, db
+import os
+from flask_login import  login_required, LoginManager, UserMixin, login_manager, login_user, current_user, logout_user
+from flask import Flask, request, session, render_template, url_for, flash, get_flashed_messages, message_flashed
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import PY3, Bcrypt
+from werkzeug.utils import redirect, secure_filename
+from flask_wtf import Form
+from wtforms import StringField, PasswordField, validators
+from werkzeug.utils import redirect, secure_filename
+from wtforms.fields.numeric import IntegerField
+from wtforms.fields.simple import EmailField, SubmitField, FileField
+from app.models import User
+from app.models import User, Seller, Work
+from app.forms import * 
+from app import ALLOWED_EXTENSIONS
+
+
+UPLOAD_FOLDER =  '/static/uploads/'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+login_manager.login_message = "Login to Continue"
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':       
+        username = request.form.get('username')
+        user = User.query.filter_by(username=username).first()
+        if user:
+            if bcrypt.check_password_hash(user.password, request.form['password']):
+                login_user(user)
+                return redirect(url_for('home'))
+            else:
+                
+                flash(f'Incorrect password')
+                return redirect(url_for('reset'))
+            
+        return redirect(url_for('signup'))
+    return render_template('login.html')
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset():
+    form = Reset(request.form)
+    if request.method == 'POST':
+        user =  User.query.filter_by(username=form.username.data).first()
+        if user:
+            try:
+                hashed_password = bcrypt.generate_password_hash(form.password.data)
+                user.password = hashed_password
+                db.session.commit()
+                flash(f'Password reset successful')
+                return redirect(url_for('login'))
+            except:
+                return "<h1>Your password reset failed</h1>"
+        "<h1>Your account doesnt exist</h1>"
+        return redirect(url_for('signup'))
+    return render_template('reset_password.html', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+   logout_user()
+   return redirect(url_for('index'))
+
+@app.route('/account')
+@login_required
+def account():
+    return render_template("account.html", user=User.query.filter_by(id=current_user.id).first())
+
+    
+@app.route('/update_account', methods=['GET', 'POST'])
+@login_required
+def update():
+    user = User.query.get(current_user.id)
+    form = EditProfileForm(request.form)
+    if request.method == 'POST':
+        user.name = form.name.data
+        user.email = form.email.data
+        user.username = form.username.data        
+        db.session.commit()
+        return redirect(url_for('account'))
+    return render_template('edit_profile.html', form=form, user=user)
+
+
+@app.route('/delete_account')
+@login_required
+def delete_account():
+    seller = Seller.query.filter_by(id=current_user.id).first()
+    user  = User.query.filter_by(id=current_user.id).first()
+    if seller:
+        # os.remove(os.path.join('static/uploads/',  current_user.name))
+        # os.remove(current_user.name)
+        db.session.delete(seller), db.session.delete(user)
+        db.session.commit()
+    db.session.delete(user)
+    db.session.commit()
+    logout_user()
+    return redirect(url_for('index'))
+
+
+@app.route("/delete/<int:id>")
+@login_required
+def delete_product(id):
+    seller = User.query.filter_by(id=current_user.id).first()
+    work = Work.query.filter_by(seller_id=seller.id).first()
+    if work and seller:
+        db.session.delete(work)
+        db.session.commit()
+        flash(f"Success delete")
+        return redirect(url_for('sellers'))
+    flash(f"Failed to delete")
+    return redirect(url_for('sellers')) 
+
+
+
+@app.route('/home')
+@login_required
+def home():
+    return render_template('home.html', sellers=Seller.query.all(), work=Work.query.all())
+
+@app.route('/sellers')
+@login_required
+def sellers():
+    seller = Seller.query.filter_by(id=current_user.id).first()
+    if seller:
+        work = Work.query.filter_by(seller_id=current_user.id).all()
+        return render_template('sellers.html', work=work, seller = Seller.query.filter_by(username=current_user.username).first() )   
+    else:
+        return redirect(url_for('register'))
+       
+      
+@app.route('/update_work/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update_product(id):
+    
+    work = Work.query.get_or_404(id)
+    form = EditProduct(request.form)
+    if request.method == 'POST':
+        work.name = form.name.data
+       
+        work.price = form.price.data
+       
+        work.description = form.description.data
+        
+        db.session.commit()
+        return redirect(url_for('sellers'))
+       
+    return render_template('update_product.html', form=form, work=work)    
+
+
+
+
+@app.route('/add_product', methods=['POST', 'GET'])
+@login_required
+def add_product():
+    form = Addwork()
+    seller = Seller.query.filter_by(username=current_user.username).first()      
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash(f'No file part', 'error')
+            return redirect(url_for('sellers'))
+    
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            return render_template('sellers.html', work = Work.query.filter_by(seller_id=current_user.id).all(), seller = Seller.query.filter_by(username=current_user.username).first())
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(seller.folder, filename))
+             
+            
+            new_work = Work(name=request.form['name'], img=filename,   price=request.form['price'], description=request.form['description'], seller_id=current_user.id)
+            
+            try:
+                db.session.add(new_work)
+                db.session.commit()
+                
+                return render_template('sellers.html', work=Work.query.filter_by(seller_id=current_user.id).all(), seller = Seller.query.filter_by(username=current_user.username).first())
+            except:
+                flash(f"Failed to add your new product")
+    return render_template('add_product.html', form=form)            
+
+
+   
+
+
+@app.route('/register', methods=['POST', 'GET'])
+@login_required
+def register():
+    form = Registration()
+    if request.method == 'POST':       
+        seller = User.query.filter_by(username=current_user.id).first()
+        folder = (os.path.join(app.config['UPLOAD_FOLDER'],  current_user.name))
+        os.mkdir(folder)
+        
+        new_seller = Seller(name=current_user.name, flexibility=request.form['flexibility'], location=request.form['location'],  folder=folder, email=current_user.email, username=current_user.username, type_work=request.form['type_work'], phone=request.form['phone'])
+        try:
+            db.session.add(new_seller)
+            db.session.commit()
+            return redirect(url_for('sellers'))
+        except:
+            flash(f'Failed to register your business')
+            return redirect(url_for('home'))
+        
+    return render_template('register.html', form=form)
+
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form=Signup(request.form)
+    if request.method == 'POST' and form.validate():
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        user = User(username=form.username.data,   email=form.email.data, name=form.name.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('login'))
+    return render_template('signup.html', form=form)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
