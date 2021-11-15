@@ -22,8 +22,8 @@ app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Initialize The Database
 db = SQLAlchemy(app)
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 UPLOAD_FOLDER =  'static/uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
