@@ -4,7 +4,7 @@ from flask import Flask, request, session, render_template, url_for, flash, get_
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import PY3, Bcrypt
 from sqlalchemy.orm import relationship
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, validators
 from werkzeug.utils import redirect, secure_filename
 from wtforms.fields.numeric import IntegerField
@@ -264,7 +264,7 @@ def register():
 
 
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['POST', 'GET'])
 def signup():
     form=Signup(request.form)
     if request.method == 'POST' and form.validate():
@@ -279,51 +279,70 @@ def signup():
 def index():
     return render_template('index.html')
 
+#validation functions
+def validate_password(form, field):
+    password = field.data
+    if not any(ele.isnumeric() for ele in password) or not any(ele.isupper() for ele in password) or  not any(ele not in "[@_!#$%^&*()<>?/|}{~:]" for ele in password):
+        raise validators.ValidationError("Password must contain a number, a special character and at least one capital letter") 
+
+def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user:
+            raise validators.ValidationError('That username is taken. Please choose a different one.')
+
+def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user:
+            raise validators.ValidationError('That email is taken. Please choose a different one.')
+
+
+
 
 # FORMS 
-class EditProfileForm(Form):
-    name = StringField('Name',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    email = EmailField('Email',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    username = StringField('Username',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
+class EditProfileForm(FlaskForm):
+    name = StringField('Name',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    email = EmailField('Email',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    username = StringField('Username',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
     submit = SubmitField("Update Account Details")
 
-class Reset(Form):
-    username = StringField('Username',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    password = PasswordField('password',  validators=[validators.input_required()])
-    confirm= PasswordField('Confirm',  validators=[validators.input_required(), validators.Length(min=1, max=50), validators.EqualTo('password',
+class Reset(FlaskForm):
+    username = StringField('Username',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    password = PasswordField('confirm',  validators=[validators.InputRequired(), validators.Length(min=1, max=50), validators.EqualTo('confirm',
                              message="Passwords must match")])
+    confirm = PasswordField('password',  validators=[validators.InputRequired(), validate_password])
+    
     submit = SubmitField("RESET")
     
-class EditProduct(Form):
-    name = StringField('Name',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    price = IntegerField('Price',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    description = StringField('description',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
+class EditProduct(FlaskForm):
+    name = StringField('Name',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    price = IntegerField('Price',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    description = StringField('description',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
     submit = SubmitField("Update")
 
     
-class Addwork(Form):
-    name = StringField('Name',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    price = StringField('price',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    description = StringField('Description',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
+class Addwork(FlaskForm):
+    name = StringField('Name',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    price = StringField('price',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    description = StringField('Description',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
     file = FileField("Image")
     submit = SubmitField("Update")
 
     
-class Registration(Form):
-    phone = StringField('Phone',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    type_work = StringField("Type of Service", validators=[validators.input_required()])
-    location = StringField("Location in Kigali", validators=[validators.input_required()])
-    flexibility = StringField("Mobile or Salon: Can you travel for customers or they come to you. ", validators=[validators.input_required()])
+class Registration(FlaskForm):
+    phone = StringField('Phone',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    type_work = StringField("Type of Service", validators=[validators.InputRequired()])
+    location = StringField("Location in Kigali", validators=[validators.InputRequired()])
+    flexibility = StringField("Mobile or Salon: Can you travel for customers or they come to you. ", validators=[validators.InputRequired()])
     submit = SubmitField("Register")
 
 
-class Signup(Form):
-    name = StringField('Name',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    email = StringField('Email',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
-    username = StringField('Username',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
+class Signup(FlaskForm):
+    name = StringField('Name',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    email = StringField('Email',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
+    username = StringField('Username',  validators=[validators.InputRequired(), validators.Length(min=1, max=50)])
     
-    password = PasswordField('password',  validators=[validators.input_required()])
-    confirm= PasswordField('Confirm',  validators=[validators.input_required(), validators.Length(min=1, max=50), validators.EqualTo('password',
+    password = PasswordField('password',  validators=[validators.InputRequired(), validate_password])
+    confirm= PasswordField('Confirm',  validators=[validators.InputRequired(), validators.Length(min=1, max=50), validators.EqualTo('password',
                              message="Passwords must match")])
     submit = SubmitField("Register")
 

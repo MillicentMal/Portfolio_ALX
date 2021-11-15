@@ -4,119 +4,134 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> UBWIZA</title>
+    
+    {% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
+    {% endblock %}
+   
 
 </head>
 <body>
-    <header>
-        
-       
-           
-            <a href="{{url_for('login')}}">LOGIN</a>
-            <a href="{{url_for('sellers')}}">SELL</a>
-            <a href="{{url_for('home')}}">EXPLORE</a>
-       
-
-    </header>
-    <br>
-
-    <main>
-        
-            <div class="intro-inner">        
-                <div>
-              <h1>
-                  Our Mission
-              </h1>
-               <p class="p1">
-                Our mission is to link our users to affordable but quality services in the beauty industry. 
-                               
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea illum corporis, cum voluptatem in, soluta, nam iusto vitae eum et sint fuga porro consequatur omnis labore temporibus dignissimos dolorum amet.
-               </p>
-                <button class="shop"><a href="{{url_for('home')}}">EXPLORE</a></button>
-            </div> 
-            <div>
-                <img class="top" src="{{url_for('static', filename='images/connecting.svg')}}" alt="Connecting teams">
-            </div>
-
-            </div>
-
-     
-
-
-        <div class="about">
-            <div class="left">
-                <img src="{{url_for('static', filename='images/undraw_happy_2021_h01d.svg')}}" alt="Connecting teams"> 
-            </div> 
-            <div class="right">
-            
-                    <p>
-                    Founded in August 2021, Ubiza seeks to give women and men the city of Kigali's beauty industry service providers in their finger tips. 
-
-                </p>
-                <p>
-                    We strive in connecting our customers to every service provider in Kigali, along with prices reducing the risk of being overcharged and mistreated. 
-                </p>
-       </div>
-      
-        </div>
-
-<br>
-        <div class="offers">
-            <h1>
-                WHAT WE OFFER
-            </h1>
-            <div class="offers-explore">
-                <h1>
-                    EXPLORE
-                </h1>
-            <div>
-                <img src="{{url_for('static', filename='images/multiple_profiles.svg')}}" alt="Sellers"> 
-                <FIGcaption>
-                    As long as you have an account you can view all our available service providers
-                </FIGcaption>
-                <ul>
-                    <li>
-                        Nail Artists
-                    </li>
-                    <li>
-                        Hair stylists
-                    </li>
-                    <li>
-                        Makeup Artists
-                    </li>
-                </ul>
-                   
-            </div>
-
-            <div>
-                <h1>
-                    GROW YOUR BUSINESS
-                </h1>
-                <img src="{{url_for('static', filename='images/seller.svg')}}" alt="Sellers"> 
-                <FIGcaption>
-                    Show off your previous work and get clients. 
-                </FIGcaption>
-
-            </div>
-    </div>
-
-<br>
-<div class="contact">
-    <div>  
-        <div class="bottom" id="bottom">
     
-           <a href="{{url_for('index')}}"><h1>
-            Back to top
-           </h1></a> 
-          
-        <p>
-            Where beauty meets innovation
-        </p> 
-      
+<main>  
+          <div class="buyer"> 
+              <div >
+                  <img  class="top"  src="{{url_for('static', filename='images/beauty-2537562_640.jpg')}}" alt="">
+              </div>
+              <nav>
+     
+                  
         
-        </div>
-    </main>
+            <a href="{{url_for('login')}}">LOGIN</a>
+           
+            <a href="{{url_for('home')}}">EXPLORE</a>
+            <a href="{{url_for('register')}}">SIGNUP</a>
+        </nav>
+        <div class="header">
+            <h1 >
+                For the Buyer
+            </h1>
+            <div>
+                <p>Ubwiza is a link to the best hair and beauty care service provicers in Kigali
+                </p>
+            </div>
+            </div>
 
+            <div class="services">
+               <div class="nails">
+                <img  class="top"  src="{{url_for('static', filename='images/kartik-gada--4iMX-4MIZ8-unsplash.jpg')}}" alt="">
+                <div>
+                    <h3>
+                     MANIS AND PEDIS
+                    </h3>
+                    
+                <p>
+                   Dont be caught with chapped nail polish. ("It's kind of illegal here.") 
+                </p>
+                
+                </div>   
+               </div>
+
+
+               <div class="hair">
+
+
+<div>
+    <h3>
+        MAKEUP ARTISTS
+    </h3>
+    
+<p>
+    Get to see all the Makeup Artists near your home and know what you will be paying for. 
+</p>
+
+</div>
+
+<img  class="top"  src="{{url_for('static', filename='images/makeup3.jpg')}}" alt="">
+               </div>
+          
+                   
+      
+               <div class="beauty">
+
+<img  class="top"  src="{{url_for('static', filename='images/people-2561845_1920.jpg')}}" alt="">
+<div>
+    <h3>
+      HAIRDRESSERS
+    </h3>
+    
+<p>
+    Get your hair ready for the Rwandan experience at affordable prices. 
+</p>
+
+</div>
+               </div>
+                 
+            </div>
+        </div>
+        </div>
+
+        <div class="seller">
+            <img  class="top"  src="{{url_for('static', filename='images/barbershop-1612726_1920.jpg')}}" alt="">
+            <div class="header">
+                <h1 >
+                    For the Skilled Artist
+                </h1>
+                <div>
+                    <p>
+                       Ubwiza is a place to showcase your work and get clients
+                    </p>
+                    <h2>
+                        "Secure the bag"
+                    </h2>
+                </div>
+                </div>
+            <nav>
+     <a href="{{url_for('login')}}">LOGIN</a>
+            <a href="{{url_for('sellers')}}">SELL</a>
+            
+            <a href="{{url_for('register')}}">SIGNUP</a>
+        </nav>
+        <div>
+ 
+   
+    </main>
+    <div class="me">
+        <h2>
+            Ubwiza was created with 2 people in mind. 
+        </h2>
+        <h4>
+        Connect through Ubwiza and find your perfect match. 
+        </h4>
+        <p>
+            Disclaimer : Not all users here are trustworthy. We debug code, not people.  
+        </p>
+   
+        
+    </div>
 </body>
 </html>

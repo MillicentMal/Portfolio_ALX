@@ -1,15 +1,19 @@
-* { 
+body { 
     padding: 0;
     margin: 0;
+    background-color: rgba(165, 0, 255, 0.2);
+    
+    font-family: 'Lato' , sans-serif;
 }
 
 header {
-    background-color: rgba(165, 0, 255, 0.2);
+
     width: 100%;
     height: 10vh;
     text-align: center;
  display: inline-flex;
  justify-content: space-between;
+
     
 }
 
@@ -21,21 +25,38 @@ header a , p {
 
 
 main {
-    font-family: 'Indie Flower', 'Lato' , cursive;
+  
     font-family: 'Lato' , sans-serif;
+    background-color: white;
     font-weight: 900;
-    padding-right: 5vw;
-    padding-left: 5vw;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat()
 }
 
 .seller {
-    width: 30%;
-    height: 25vh;
+    
     display: grid;
     grid-template-columns: 1fr;
     background-color: rgba(165, 0, 255, 0.2); 
+}
+
+.service {
+    border-radius: .2em;
+    background-color: white;
+    box-shadow: 0 2px 5px 0 rgb(165, 0, 255);
+    overflow: auto;
+}
+
+img {
+    width: 100%;
+display: block;
+aspect-ratio: 16/9;
+height: 50%;
+object-fit: cover;
+
+opacity: 2;
 }

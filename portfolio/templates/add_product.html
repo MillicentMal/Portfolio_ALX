@@ -30,7 +30,7 @@
    
     <form  action="/add_product"  enctype="multipart/form-data" method="POST" id="product_add">
        
-        {{ form.hidden_tag }}
+        {{ form.csrf_token }}
         <label for=""> {{ form.name.label }}</label>
         {{ form.name }}
         <label for=""> {{ form.price.label }}</label>
