@@ -1,2 +1,2 @@
-from portfolio.__init__ import db
+from portfolio import db
 db.create_all()
