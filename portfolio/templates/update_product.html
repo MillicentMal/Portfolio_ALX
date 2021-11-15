@@ -29,7 +29,7 @@
 
 
     <form method="POST">
-        {{ form.hidden_tag }}
+        {{ form.csrf_token }}
         <label for=""> {{ form.name.label }}</label>
         {{ form.name }}
         <label for=""> {{ form.price.label }}</label>

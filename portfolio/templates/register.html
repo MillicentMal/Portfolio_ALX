@@ -14,7 +14,7 @@
          
         <div>
             <form method="POST" action="/register">
-                {{ form.hidden_tag }}
+                {{ form.csrf_token }}
                 <label for=""> {{ form.phone.label }}</label>
                 {{ form.phone }}
                 <label for=""> {{ form.type_work.label }}</label>

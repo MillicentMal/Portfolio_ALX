@@ -2,25 +2,31 @@ body {
     padding: 0;
     margin: 0;
     color: purple;
+    background-color: rgba(165, 0, 255, 0.2);
     display: grid;
     grid-template-columns: auto;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 main {
+    border-radius: 1em;
+    background-color: white;
     display: grid;
-    padding-top: 5vh;
-    padding-right: 2vw;
+    margin: 2vw;
+    height: 40em;
+    box-shadow: 0 2px 5px 0 rgb(165, 0, 255);
+    overflow: hidden;
 
 }
 
 img {
     max-width: 75%;
     grid-column: 1;
+    margin: 2em;
 }
 
 form {
    
-    background-color: rgba(165, 0, 255, 0.2);
+    background-color: rgba(165, 0, 255, 0.1);
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -29,6 +35,8 @@ form {
     grid-row: 1;
     justify-content: center;
     align-content: center;
+    margin: 3em;
+    border-radius: 1em;
     
 }
 
@@ -91,7 +99,17 @@ header {
     background-color: rgba(165, 0, 255, 0.2);
 }
 
+.button  {
+    font-family: 'Lato';
+    border-radius: .2em;
+    border: none;
+    background-color: white;
+    color: purple;
+    font-size: 1em;
+    font-weight: 900;
+    justify-self: center;
 
+}
 a {
     padding-top: 2em;
     color: purple;
