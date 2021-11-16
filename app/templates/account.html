@@ -7,6 +7,7 @@
     {% block styles %}
  
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -20,33 +21,39 @@
             <h1>ACCOUNT DETAILS
             </h1>
     <a href="{{url_for('index')}}">HOME</a>
-        
+     <a href="{{url_for('reset')}}">RESET</a>   
+    
     <a href="{{url_for('home')}}">EXPLORE</a>
     <a href="{{url_for('logout')}}">LOGOUT</a>
 
 </header>
-    {}
 
-<a href="{{url_for('delete_account')}}">DELETE ACCOUNT</a>
+
 {% block content %}
+<main>
+<img src="{{url_for('static', filename='images/joinus.svg')}}" alt="REGISTER">
 {% if user %}
-<div>
-    <div>
-        {{ user.name }}
+<div class="userD"> 
+    <div class="name">
+       Name:  {{ user.name }}
     </div>
-   <div>
-    {{ user.username }}
+   <div class="user">
+    Username: {{ user.username }}
    </div>
-   <div>
+   <div class="email">
   
-    {{ user.email }}
+    Email: {{ user.email }}
+
    </div>
  
+<a class="but" href="{{url_for('delete_account')}}">DELETE ACCOUNT</a>
+<a class="but" href="{{url_for('update')}}">Update Account details</a>
 </div>
 {% endif %}
 
+</main>
 {% endblock %}
    
- 
+
 </body>
 </html>

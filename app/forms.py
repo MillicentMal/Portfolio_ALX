@@ -38,7 +38,7 @@ class Addwork(Form):
     price = StringField('price',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
     description = StringField('Description',  validators=[validators.input_required(), validators.Length(min=1, max=50)])
     file = FileField("Image")
-    submit = SubmitField("Update")
+    submit = SubmitField("Add Work")
 
     
 class Registration(Form):

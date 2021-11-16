@@ -1,0 +1,40 @@
+
+main {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+img  {
+    width: 50%;
+}
+.userD {
+    display: flex;
+    flex-direction: column;
+   background-color: rgba(127, 0, 255, 0.5);
+    padding-right: 5em;
+    justify-self: center;
+    align-self: center;
+    box-shadow: 2em 2em 2em -2em;
+    box-shadow: -2em 4em -2em -2em;
+    height: 50vh;
+    align-items: center;
+
+}
+
+.name, .username, .email {
+    width: 25vw;
+    height: 2em;
+    text-align: center;
+ font-weight: 900;
+    justify-self: center;
+    padding-top: 10%;
+
+
+}
+
+a {
+    text-decoration: white;
+    color: red;
+}

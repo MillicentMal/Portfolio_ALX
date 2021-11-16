@@ -1,3 +1,4 @@
+from flask.helpers import send_from_directory
 from app import app 
 from app import bcrypt, db
 import os
@@ -17,7 +18,7 @@ from app.forms import *
 from app import ALLOWED_EXTENSIONS
 
 
-UPLOAD_FOLDER =  'static/uploads/'
+UPLOAD_FOLDER =  'uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 login_manager = LoginManager()
@@ -130,18 +131,38 @@ def delete_product(id):
 @app.route('/home')
 @login_required
 def home():
-    return render_template('home.html', sellers=Seller.query.all(), work=Work.query.all())
+    search = request.args.get('search')
+    service = request.args.get('service')
+    
+    if search:
+        sellers = Seller.query.filter(Seller.flexibility.contains(search) | Seller.location.contains(search) | Seller.type_work.contains(search))
+        work = Work.query.all() 
+            
+    
+    elif service:
+        sellers=Seller.query.all()
+        work = Work.query.filter(Work.name.contains(service))
+        return render_template('home.html',   work=work, sellers=sellers )
+    elif not search and not service:
+        work=Work.query.all()
+        sellers=Seller.query.all()  
+        return render_template('home.html',   work=work, sellers=sellers )
+
+        
+    else:
+        work=Work.query.all()
+        sellers=Seller.query.all()  
+    return render_template('home.html',   work=work, sellers=sellers )
+
 
 @app.route('/sellers')
 @login_required
 def sellers():
     seller = Seller.query.filter_by(id=current_user.id).first()
-    if seller:
-        work = Work.query.filter_by(seller_id=current_user.id).all()
-        return render_template('sellers.html', work=work, seller = Seller.query.filter_by(username=current_user.username).first() )   
-    else:
-        return redirect(url_for('register'))
-       
+    if not seller:
+         return redirect(url_for('register'))
+    work = Work.query.filter_by(seller_id=current_user.id).all()
+    return render_template('sellers.html', work=work, seller = Seller.query.filter_by(username=current_user.username).first() )   
       
 @app.route('/update_work/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -193,30 +214,32 @@ def add_product():
                 
                 return render_template('sellers.html', work=Work.query.filter_by(seller_id=current_user.id).all(), seller = Seller.query.filter_by(username=current_user.username).first())
             except:
-                flash(f"Failed to add your new product")
+                return "<h1>Failed to add your new product</h1>"
     return render_template('add_product.html', form=form)            
 
 
    
 
 
-@app.route('/register', methods=['POST', 'GET'])
+@app.route('/register', methods=['GET', 'POST'])
 @login_required
 def register():
     form = Registration()
+    seller = Seller.query.filter_by(username=current_user.id).first()
+    if request.method == 'GET' and seller:
+        return redirect(url_for('sellers'))
     if request.method == 'POST':       
-        seller = User.query.filter_by(username=current_user.id).first()
-        folder = (os.path.join(app.config['UPLOAD_FOLDER'],  current_user.name))
-        os.mkdir(folder)
+            folder = (os.path.join(app.config['UPLOAD_FOLDER'],  current_user.name))
+            os.mkdir(folder)
         
-        new_seller = Seller(name=current_user.name, flexibility=request.form['flexibility'], location=request.form['location'],  folder=folder, email=current_user.email, username=current_user.username, type_work=request.form['type_work'], phone=request.form['phone'])
-        try:
-            db.session.add(new_seller)
-            db.session.commit()
-            return redirect(url_for('sellers'))
-        except:
-            flash(f'Failed to register your business')
-            return redirect(url_for('home'))
+            new_seller = Seller(name=current_user.name, flexibility=request.form['flexibility'], location=request.form['location'],  folder=folder, email=current_user.email, username=current_user.username, type_work=request.form['type_work'], phone=request.form['phone'])
+            try:
+                db.session.add(new_seller)
+                db.session.commit()
+                return redirect(url_for('sellers'))
+            except:
+                flash(f'Failed to register your business')
+                return redirect(url_for('home'))
         
     return render_template('register.html', form=form)
 
@@ -236,3 +259,14 @@ def signup():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+
+
+
+#first create the route
+@app.route('/uploads/<path:filename>')
+def download_file(filename):
+    return send_from_directory(os.path.abspath(UPLOAD_FOLDER), filename, as_attachment=True)
+
+#add this to the template inside of an image tag

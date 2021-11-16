@@ -1,3 +1,4 @@
+from os.path import join, dirname, realpath
 import os
 from flask_login import  login_required, LoginManager, UserMixin, login_manager, login_user, current_user, logout_user
 from flask import Flask, request, session, render_template, url_for, flash, get_flashed_messages, message_flashed
@@ -28,7 +29,10 @@ db = SQLAlchemy(app)
 with app.app_context():
     db.create_all()
 
-UPLOAD_FOLDER =  'static/uploads/'
+
+
+UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'static/uploads/..')
+
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 bcrypt = Bcrypt(app)

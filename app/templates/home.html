@@ -27,46 +27,65 @@
 </nav>
 </header>
 <main>
-  <form action="search" method="get">
-    <input type="text" name="query" id="query">
-    <button type="submit">SEARCH</button>
+  
+  <form class="search" method="GET">
+    <div  class="input">
+      <input type="text" name="search" id="search" placeholder="location, flexibility: mobile or salon, type of service: nails, makeup, hair">
+
+      <button class="btn" type="submit">Search</button>
+    </div>
+   
+    <div>
+      <input type="text" name="service" id="search">
+
+      <button class="btn" type="submit"> Service</button>
+    </div>
+    
+    
+
+
   </form>
+
+  <div class="products">
     {% for seller in sellers %} 
     {% for works in work %}
     {% if seller.id == works.seller_id %} 
-        
+
     <div class="service">
-        <img id="pic" class="hidden w-100" src="{{ url_for('static', filename='uploads/' + seller.name + '/'+ works.img ) }}" alt="image">
-        
+      <img  id="pic" class="image" src="{{ url_for('download_file', filename=seller.name + '/'+ works.img ) }}" alt="image">
+      
 
-       
 
-      <p class="work_name">
-        Service: {{ works.name }}
-      </p> 
-      <div>
-        <p class="seller">
-            Seller: {{ seller.name }}
-          </p> 
-          <p>
-            Call: {{ seller.phone }}
-          </p> 
-      </div>
-      <p>
-        Location: {{seller.location }}
-
-      </p>
+    <h1 class="work_name">
+   {{ works.name }}
+    </h1> 
+    <div>
+      <p class="seller">
+          Seller: {{ seller.name }}
+        </p> 
         <p>
-          flexibility : {{ seller.flexibility }}
-        </p>
+          Call: {{ seller.phone }}
+        </p> 
+    </div>
+    
       <p class="price"> Price: {{ works.price }} RWF </p>
-    <div class='description'>
-        {{ works.description }}
+  <div class='description'>
+     <p>
+      {{ works.description }}
+     </p> 
+     <p>
+      {{ seller.location }}
+     </p>
+     <p>
+      {{ seller.flexibility }}
+     </p>
+  
+  </div>
+      
     </div>
 
-    </div>
-        
-        
+    
+               
     {% endif %} 
     {% endfor %} 
    {%  endfor %}

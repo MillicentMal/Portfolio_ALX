@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sellers.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+ 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -16,18 +17,20 @@
 
     {% block content%}
     <header>
-        <nav>
+     
     <a href="{{url_for('index')}}">HOME</a>
     <a href="{{url_for('sellers')}}">SELL</a>
     <a href="{{url_for('home')}}">EXPLORE</a>
     <a href="{{url_for('account')}}">ACCOUNT</a>
     <a href="{{url_for('logout')}}">LOGOUT</a>
-    
-</nav>
+
 </header>
 
 {% endblock %}
-   
+<main>
+
+
+    <img src="{{url_for('static', filename='images/undraw_add_information_j2wg.svg')}}" alt="REGISTER">
     <form  action="/add_product"  enctype="multipart/form-data" method="POST" id="product_add">
        
         {{ form.csrf_token }}
@@ -37,9 +40,10 @@
         {{ form.price }}
         <label for=""> {{ form.description.label }}</label>
         {{ form.description }}
-        <label for=""> {{ form.file.label }}</label>
-        {{ form.file }}
-        {{ form.submit }}
+      
+        <label  for=""> Insert Image</label>  {{ form.file(class="file") }}
+     
+        {{ form.submit(class="button") }}
         </form>
     </div>
     
@@ -51,5 +55,6 @@
        Ubwiza -  Where beauty meets innovation  &#174; 
       </p>
 </footer>
+</main>
 </body>
 </html>

@@ -28,13 +28,13 @@
     {% if seller.folder %}
     {% for works in work %}
     <div class="service">
-        <img id="pic" class="hidden w-100" src="{{ url_for('static', filename='uploads/' + seller.name + '/'+ works.img ) }}" alt="image">
+        <img width="100%" height="100%" id="pic" class="image" src="{{ url_for('download_file', filename=seller.name + '/'+ works.img ) }}" alt="image">
         
   
 
-      <p class="work_name">
-        Service: {{ works.name }}
-      </p> 
+      <h1 class="work_name">
+     {{ works.name }}
+      </h1> 
       <div>
         <p class="seller">
             Seller: {{ seller.name }}
@@ -50,8 +50,8 @@
     
     </div>
     
-    <a class="ui blue button" href="/update_work/{{works.id}}">Update</a>
-    <a class="ui red button" href="/delete/{{ works.id }}">Delete</a>
+    <a class="btn" href="/update_work/{{works.id}}">Update</a>
+    <a class="btn" href="/delete/{{ works.id }}">Delete</a>
     </div>
         
         

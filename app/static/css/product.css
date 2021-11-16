@@ -1,0 +1,136 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: purple;
+    background-color: rgba(165, 0, 255, 0.2);
+    display: grid;
+    grid-template-columns: auto;
+    font-family: 'Lato', sans-serif;
+}
+main {
+    border-radius: 1em;
+    background-color: white;
+    display: grid;
+    margin: 2vw;
+    height: 40em;
+    box-shadow: 0 2px 5px 0 rgb(165, 0, 255);
+    overflow: hidden;
+
+}
+img {
+    width: 30em;
+}
+
+form {
+   
+    background-color: rgba(160, 0, 255, 0.5);
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 75vh;
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: center;
+    align-content: center;
+    margin: 3em;
+    border-radius: 1em;
+    text-align: center;
+    font-weight: 800;
+    
+    
+}
+.file {
+    border: none;
+    width: 15em;
+   
+}
+
+input {
+    padding-left: 25%;
+ border-radius: .5em;
+ font-family: "Lato", sans-serif;
+    height: 2em;
+    width: 10em;
+    max-width: fit-content;
+    margin-bottom: 2em;
+    border: solid white;
+    
+}
+main {
+    background-color: white;
+}
+.pic {
+    border: none;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+.submit {
+    color: white;
+    border-style: none;
+    background-color: purple;
+    justify-self: center;
+    text-align: center;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+h1 {
+    color: purple;
+    justify-self: center;
+}
+
+header {
+    text-align: center;
+}
+
+
+form {
+    grid-column: 2/span 3;
+    padding-right: 5em;
+    justify-self: center;
+    box-shadow: 2em 2em 2em -2em;
+    box-shadow: -2em 4em -2em -2em;
+    position: relative;
+
+}
+header {
+    
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(165, 0, 255, 0.2);
+}
+
+.button  {
+    font-family: 'Lato';
+    border-radius: .2em;
+    border: none;
+    background-color: purple;
+    color: white;
+    font-size: 1em;
+    font-weight: 900;
+    justify-self: center;
+    width: max-content;
+    text-align: center;
+    margin-left: 2em;
+    padding-left: 2em;
+    position: absolute;
+    right: 10%;
+    bottom: 0%;
+
+
+
+}
+a {
+    padding-top: 2em;
+    color: purple;
+    font-weight: 900;
+    text-decoration: none;
+
+}
