@@ -1,0 +1,17 @@
+
+body {
+background-color : purple;
+}
+img {
+    width: 50vw;
+    height: 50vh;
+    justify-self: center;
+}
+
+main {
+    background-color: white;
+    justify-self: center;
+    width: 80vw;
+    height: 80vh;
+
+}

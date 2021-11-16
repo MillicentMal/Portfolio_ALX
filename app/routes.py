@@ -270,3 +270,16 @@ def download_file(filename):
     return send_from_directory(os.path.abspath(UPLOAD_FOLDER), filename, as_attachment=True)
 
 #add this to the template inside of an image tag
+
+
+# ERROR PAGES
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('500.html'), 500
