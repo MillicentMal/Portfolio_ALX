@@ -226,21 +226,21 @@ def add_product():
 def register():
     form = Registration()
     seller = Seller.query.filter_by(username=current_user.id).first()
-    if request.method == 'GET' and seller:
+    if seller:
         return redirect(url_for('sellers'))
-    if request.method == 'POST':       
-            folder = (os.path.join(app.config['UPLOAD_FOLDER'],  current_user.name))
-            os.mkdir(folder)
-        
-            new_seller = Seller(name=current_user.name, flexibility=request.form['flexibility'], location=request.form['location'],  folder=folder, email=current_user.email, username=current_user.username, type_work=request.form['type_work'], phone=request.form['phone'])
-            try:
-                db.session.add(new_seller)
-                db.session.commit()
-                return redirect(url_for('sellers'))
-            except:
-                flash(f'Failed to register your business')
-                return redirect(url_for('home'))
-        
+    if request.method == 'POST':    
+        folder = (os.path.join(app.config['UPLOAD_FOLDER'],  current_user.name))
+        os.mkdir(folder)
+    
+        new_seller = Seller(name=current_user.name, flexibility=request.form['flexibility'], location=request.form['location'],  folder=folder, email=current_user.email, username=current_user.username, type_work=request.form['type_work'], phone=request.form['phone'])
+        try:
+            db.session.add(new_seller)
+            db.session.commit()
+            return redirect(url_for('sellers'))
+        except:
+            flash(f'Failed to register your business')
+            return redirect(url_for('home'))
+    
     return render_template('register.html', form=form)
 
 
