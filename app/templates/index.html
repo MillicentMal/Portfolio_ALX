@@ -16,21 +16,26 @@
 
 </head>
 <body>
-    
-<main>  
-          <div class="buyer"> 
-              <div >
-                  <img  class="top"  src="{{url_for('static', filename='images/beauty-2537562_640.jpg')}}" alt="">
-              </div>
-              <nav>
+<header>
+    <nav>
      
                   
         
-            <a href="{{url_for('login')}}">LOGIN</a>
-           
-            <a href="{{url_for('home')}}">EXPLORE</a>
-            <a href="{{url_for('register')}}">SIGNUP</a>
-        </nav>
+        <a href="{{url_for('login')}}">LOGIN</a>
+       
+        <a href="{{url_for('home')}}">EXPLORE</a>
+        <a href="{{url_for('register')}}">SIGNUP</a>
+    </nav>
+    
+</header>
+
+<main>  
+                      
+          <div class="buyer"> 
+              <div >
+                  <img  src="{{url_for('static', filename='images/beauty-2537562_640.jpg')}}" alt="">
+              </div>
+              
         <div class="header">
             <h1 >
                 For the Buyer
@@ -105,22 +110,15 @@
                     <p>
                        Ubwiza is a place to showcase your work and get clients
                     </p>
-                    <h2>
-                        "Secure the bag"
-                    </h2>
+                   
                 </div>
                 </div>
             <nav>
-     <a href="{{url_for('login')}}">LOGIN</a>
-            <a href="{{url_for('sellers')}}">SELL</a>
-            
-            <a href="{{url_for('register')}}">SIGNUP</a>
-        </nav>
-        <div>
+   
  
    
     </main>
-    <div class="me">
+    <!-- <div class="me">
         <h2>
             Ubwiza was created with 2 people in mind. 
         </h2>
@@ -132,6 +130,14 @@
         </p>
    
         
-    </div>
+    </div> -->
+<footer>
+   <p>
+       Ubwiza - Where Beauty meets Innovation
+   </p>
+
+<div>
+</footer>
 </body>
+
 </html>

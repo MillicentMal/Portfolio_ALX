@@ -1,3 +1,82 @@
+@media screen and (max-width: 699px) {
+  
+    body {
+       display: grid;
+        gap: 1em;
+        position: relative;
+         padding: 0;
+        margin: 0;
+        background-color: rgba(165, 0, 255, 0.2);
+        font-family: "Lato";
+        color: purple;
+
+            
+    }
+    header {
+        position: fixed;
+        background-color: white;
+        width: 100%;
+        
+    }
+
+      nav {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: white;
+      
+        
+    }
+    a {
+        text-decoration: none;
+        color: blueviolet;
+        font-weight: 900;
+    }
+    main {
+       overflow-y: scroll;
+
+        display: grid;
+        grid-template-columns: repeat(1fr);
+     
+        overflow-wrap: normal;
+      margin: 2vw;
+      gap: 2em;
+    }
+  img {
+      aspect-ratio: 16/9;
+      width: 100%;
+
+  }
+  .seller, .buyer {
+      display: grid;
+      border-radius: .2em;
+      background-image: linear-gradient();
+      background-color: white;
+    box-shadow: 0 2px 5px 0 rgb(165, 0, 255);
+  
+  }
+footer {
+      
+      border-top: solid purple 1px;
+
+    
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 700px) {
+    
 body{
     padding: 0;
     margin: 0;
@@ -21,10 +100,13 @@ overflow-wrap: normal;
     position: relative;
 }
 
+.header {
+    color: purple;
+}
 .seller {
-    transform: rotate(-3deg);
+   
     grid-column: 3;
-    grid-row: 2;
+   
     height: max-content;
     margin-top: 30vh;
     padding-bottom: 5em;
@@ -32,18 +114,6 @@ overflow-wrap: normal;
 
 }
 
-.header {
-    position: absolute;
-    top: 20%;
-    color: white;
-    width: 50%;
-    bottom: 20%;
-    left: 5%;
-    font-weight: 900;
-    background-color: rgba(165, 0, 255, 0.1);
-    height: max-content;
-
-}
 .buyer {
     padding-bottom: 2em;
     display: block;
@@ -52,7 +122,7 @@ overflow-wrap: normal;
 margin-top: 5vw;
 margin-left: 2vw;
 overflow:auto;
-transform: rotate(10deg);
+
 /* height: 100vh; */
 }
 
@@ -71,12 +141,12 @@ nav {
     position: absolute;
     top: 0%;
   display: inline;
- 
+ font-size: 2em;
   text-align: center;
  font-weight: 1000;
   width: 100%;
   height: 2em;
-  padding-top: 1em;
+  padding-top: 0.5em;
   /* right: 0%; */
 
 
@@ -125,6 +195,11 @@ text-align: center;
     background-color: rgba(165, 0, 255, 0.8);
     color:white;
     border: none;
+    width: 80%;
+    align-self: center;
+    margin-left: 5em;
+    border-radius: .3em;
+    text-align: center;
 }
 
 
@@ -141,4 +216,5 @@ position: absolute;
 top: 20%;
 right: 10%;
     
+}
 }
