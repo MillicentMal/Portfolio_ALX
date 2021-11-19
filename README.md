@@ -2,23 +2,23 @@
 #This is the Portfolio Project for the ALX SE Program - Foundations Path
 
 
-<strong>Missing Features<strong>
-1. UBWIZA is a <strong>CRUD<strong> app, but because it was deployed with sqlite on Heroku, the database malfunctions. Hence these features 
+<strong>Missing Features</strong>
+1. UBWIZA is a <strong>CRUD</strong> app, but because it was deployed with sqlite on Heroku, the database malfunctions. Hence these features 
 do not run as expected on the deployed app. 
-<strong>The current plan is to collaborate with someone and migrate the project to a Postgresql database.<strong>
+<strong>The current plan is to collaborate with someone and migrate the project to a Postgresql database.</strong>
 
-<strong>RESPONSIVENESS<strong>
+<strong>RESPONSIVENESS</strong>
 The app is not responsive at all and I have already started implementing some responsiveness and this can be found on the main branch. 
 Once complete, a pull request and merge will be carried out. 
 
 <strong>My UX design skills are not great hence the UI is not at its best. Because I built this project alone, I will be reaching out to colleagues who wish to, to help create a better design that I can implement using CSS, AND Javascript. 
-<strong>
+</strong>
 
-<strong>Email Authentication<strong>
+<strong>Email Authentication</strong>
 This has not been added either. 
-<strong>Flask-Admin<strong>
+<strong>Flask-Admin</strong>
 I am working on implementing a Flask Admin page that will allow me to view processes from the web as well.  
-
+ <em>
 TEAM
 Millicent Malinga
 I am working on this project alone although I will receive guidance from my technical mentor. 
@@ -84,6 +84,4 @@ Does not focus solely on Beauty and haircare services and products
 Murukali
 Online market place
 Focuses on every product for sale in Rwanda
-
-
-
+</em>
