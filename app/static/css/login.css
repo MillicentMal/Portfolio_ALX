@@ -1,3 +1,126 @@
+@media screen and (max-width: 699px) {
+    body {
+        padding: 0;
+        margin: 0;
+        color: purple;
+        background-color: rgba(165, 0, 255, 0.2);
+        display: grid;
+        grid-template-columns: auto;
+        font-family: 'Lato', sans-serif;
+    }
+    main {
+        border-radius: 1em;
+        background-color: white;
+        display: grid;
+        margin: 2vw;
+        height: 40em;
+        box-shadow: 0 2px 5px 0 rgb(165, 0, 255);
+        overflow: hidden;
+    
+    }
+    
+    img {
+        max-width: 75%;
+        grid-column: 1;
+        margin: 2em;
+        display: none;
+    }
+    
+    form {
+       
+        background-color: rgba(165, 0, 255, 0.1);
+        display:flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        /* grid-column: 2;
+        grid-row: 1; */
+        justify-content: center;
+        align-content: center;
+        margin: 3em;
+        border-radius: 1em;
+        
+    }
+    
+    input {
+     
+        height: 2em;
+        width: 10em;
+        max-width: fit-content;
+        margin-bottom: 2em;
+        border: solid white;
+        
+    }
+    
+    
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
+    .submit {
+        color: white;
+        border-style: none;
+        background-color: purple;
+        justify-self: center;
+        text-align: center;
+        padding-top: 7.5px;
+        padding-bottom: 7.5px;
+        font-size: 1em;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
+    
+    h1 {
+        color: purple;
+        justify-self: center;
+    }
+    
+    header {
+        text-align: center;
+    }
+    
+    article {
+        display: grid;
+    
+    }
+    
+    form {
+        grid-column: 2/span 3;
+        padding-right: 5em;
+        justify-self: center;
+        box-shadow: 2em 2em 2em -2em;
+        box-shadow: -2em 4em -2em -2em;
+    
+    }
+    header {
+        
+        display: flex;
+        justify-content: space-evenly;
+        background-color: rgba(165, 0, 255, 0.2);
+    }
+    
+    .button  {
+        font-family: 'Lato';
+        border-radius: .2em;
+        border: none;
+        background-color: white;
+        color: purple;
+        font-size: 1em;
+        font-weight: 900;
+        justify-self: center;
+    
+    }
+    a {
+        padding-top: 2em;
+        color: purple;
+        font-weight: 900;
+        text-decoration: none;
+    
+    }
+}
+@media screen and (min-width: 700px) {
 body {
     padding: 0;
     margin: 0;
@@ -116,4 +239,5 @@ a {
     font-weight: 900;
     text-decoration: none;
 
+}
 }
