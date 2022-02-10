@@ -1,6 +1,6 @@
 from flask.helpers import send_from_directory
-from app import app 
-from app import bcrypt, db
+from app.app import app 
+from app.app import bcrypt, db
 import os
 from flask_login import  login_required, LoginManager, UserMixin, login_manager, login_user, current_user, logout_user
 from flask import Flask, request, session, render_template, url_for, flash, get_flashed_messages, message_flashed
@@ -15,7 +15,7 @@ from wtforms.fields.simple import EmailField, SubmitField, FileField
 from app.models import User
 from app.models import User, Seller, Work
 from app.forms import * 
-from app import ALLOWED_EXTENSIONS
+from app.app import ALLOWED_EXTENSIONS
 
 
 UPLOAD_FOLDER =  'uploads/'

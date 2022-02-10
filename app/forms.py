@@ -1,4 +1,4 @@
-from app import app
+from app.app import app
 import os
 from flask_login import  login_required, LoginManager, UserMixin, login_manager, login_user, current_user, logout_user
 from flask import Flask, request, session, render_template, url_for, flash, get_flashed_messages, message_flashed
