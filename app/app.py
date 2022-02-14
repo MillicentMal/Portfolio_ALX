@@ -19,10 +19,10 @@ from wtforms.fields.simple import EmailField, SubmitField, FileField
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 
 # Secret Key!
-app.config['SECRET_KEY'] = "my super secret key that no one is supposed to know"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Initialize The Database
 db = SQLAlchemy(app)
