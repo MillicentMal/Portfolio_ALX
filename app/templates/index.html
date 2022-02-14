@@ -1,137 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> UBWIZA</title>
-    
-    {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
-    {% endblock %}
-   
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
 
-</head>
-<body>
-    
-<main>  
-          <div class="buyer"> 
-              <div >
-                  <img  class="top"  src="{{url_for('static', filename='images/beauty-2537562_640.jpg')}}" alt="">
-              </div>
-              <nav>
-     
-                  
-        
-            <a href="{{url_for('login')}}">LOGIN</a>
-           
-            <a href="{{url_for('home')}}">EXPLORE</a>
-            <a href="{{url_for('register')}}">SIGNUP</a>
-        </nav>
-        <div class="header">
-            <h1 >
-                For the Buyer
-            </h1>
-            <div>
-                <p>Ubwiza is a link to the best hair and beauty care service provicers in Kigali
-                </p>
-            </div>
-            </div>
-
-            <div class="services">
-               <div class="nails">
-                <img  class="top"  src="{{url_for('static', filename='images/kartik-gada--4iMX-4MIZ8-unsplash.jpg')}}" alt="">
-                <div>
-                    <h3>
-                     MANIS AND PEDIS
-                    </h3>
-                    
-                <p>
-                   Dont be caught with chapped nail polish. ("It's kind of illegal here.") 
-                </p>
-                
-                </div>   
-               </div>
-
-
-               <div class="hair">
-
-
-<div>
-    <h3>
-        MAKEUP ARTISTS
-    </h3>
-    
-<p>
-    Get to see all the Makeup Artists near your home and know what you will be paying for. 
-</p>
-
-</div>
-
-<img  class="top"  src="{{url_for('static', filename='images/makeup3.jpg')}}" alt="">
-               </div>
-          
-                   
-      
-               <div class="beauty">
-
-<img  class="top"  src="{{url_for('static', filename='images/people-2561845_1920.jpg')}}" alt="">
-<div>
-    <h3>
-      HAIRDRESSERS
-    </h3>
-    
-<p>
-    Get your hair ready for the Rwandan experience at affordable prices. 
-</p>
-
-</div>
-               </div>
-                 
-            </div>
-        </div>
-        </div>
-
-        <div class="seller">
-            <img  class="top"  src="{{url_for('static', filename='images/barbershop-1612726_1920.jpg')}}" alt="">
-            <div class="header">
-                <h1 >
-                    For the Skilled Artist
+<h1> Test</h1>
+<div class="container">{% block content %}
+    <section class="bg-dark text-light p-5 text-center text-sm-start">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div><h1>
+                   Ubwiza is <span class="text-light p-3">a platform that connects beauty and hair specialists with clients</span> 
                 </h1>
-                <div>
-                    <p>
-                       Ubwiza is a place to showcase your work and get clients
-                    </p>
-                    <h2>
-                        "Secure the bag"
-                    </h2>
-                </div>
-                </div>
-            <nav>
-     <a href="{{url_for('login')}}">LOGIN</a>
-            <a href="{{url_for('sellers')}}">SELL</a>
-            
-            <a href="{{url_for('register')}}">SIGNUP</a>
-        </nav>
-        <div>
- 
-   
-    </main>
-    <div class="me">
-        <h2>
-            Ubwiza was created with 2 people in mind. 
-        </h2>
-        <h4>
-        Connect through Ubwiza and find your perfect match. 
-        </h4>
-        <p>
-            Disclaimer : Not all users here are trustworthy. We debug code, not people.  
-        </p>
-   
-        
-    </div>
-</body>
-</html>
+            <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#enroll">Start The Enrolment</button>
+            </div>
+                
+    <img src="{{url_for('static', filename='images/joinus.svg')}}" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </section>
+
+    
+    
+    {% endblock %}</div>
+    
