@@ -5,133 +5,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> UBWIZA</title>
-    
-    {% block styles %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&display=swap" rel="stylesheet">
-    {% endblock %}
-   
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{url_for('index')}}" style="font-family: 'Cedarville Cursive', cursive;font-size:1em;">Ubwiza</a>
+                </li>
+                <li>
+                <a href="{{url_for('login')}}">LOGIN</a>
+                </li>
+                <li> <a href="{{url_for('home')}}">EXPLORE</a></li>
+                <li><a href="{{url_for('register')}}">SIGNUP</a></li>
+            </ul>
+        </nav>
+    </header>
     
 <main>  
-          <div class="buyer"> 
-              <div >
-                  <img  class="top"  src="{{url_for('static', filename='images/beauty-2537562_640.jpg')}}" alt="">
-              </div>
-              <nav>
-     
-                  
-        
-            <a href="{{url_for('login')}}">LOGIN</a>
-           
-            <a href="{{url_for('home')}}">EXPLORE</a>
-            <a href="{{url_for('register')}}">SIGNUP</a>
-        </nav>
-        <div class="header">
-            <h1 >
-                For the Buyer
+<article>
+    <section class="banner">
+        <div class="banner-text">
+            <p>
+                We link you to the best
+            </p>
+        </div>
+        <div class="banner-image">
+            <img src="{{url_for('static', filename='images/connecting.svg')}}" alt="">
+        </div>
+    </section>
+
+    <section class="who">
+        <div class="client">
+
+            <h1>
+                CLIENT
             </h1>
-            <div>
-                <p>Ubwiza is a link to the best hair and beauty care service provicers in Kigali
-                </p>
-            </div>
-            </div>
-
-            <div class="services">
-               <div class="nails">
-                <img  class="top"  src="{{url_for('static', filename='images/kartik-gada--4iMX-4MIZ8-unsplash.jpg')}}" alt="">
-                <div>
-                    <h3>
-                     MANIS AND PEDIS
-                    </h3>
-                    
+            <div class="container">
+            <div class="item">
+                <img src="{{url_for('static', filename='images/counting.png')}}" alt="">
                 <p>
-                   Dont be caught with chapped nail polish. ("It's kind of illegal here.") 
+                    Select beautician
                 </p>
-                
-                </div>   
-               </div>
+            </div>
+            <div class="item">
+                <img src="{{url_for('static', filename='images/view.png')}}" alt="">
+                <p>
+                    see their products
+                </p>
+            </div>
+            <div class="item">
+                <img src="{{url_for('static', filename='images/contact.png')}}" alt="">
+                <p>
+                    Get their contact details
+                </p>
+            </div>
+            <div class="item">
+                <img src="{{url_for('static', filename='images/makeup.png')}}" alt="">
+                <p>
+                Get your service
 
-
-               <div class="hair">
-
-
-<div>
-    <h3>
-        MAKEUP ARTISTS
-    </h3>
+                </p>
+            </div>
+        </div>
+    </div>
     
-<p>
-    Get to see all the Makeup Artists near your home and know what you will be paying for. 
-</p>
-
-</div>
-
-<img  class="top"  src="{{url_for('static', filename='images/makeup3.jpg')}}" alt="">
-               </div>
-          
-                   
-      
-               <div class="beauty">
-
-<img  class="top"  src="{{url_for('static', filename='images/people-2561845_1920.jpg')}}" alt="">
-<div>
-    <h3>
-      HAIRDRESSERS
-    </h3>
-    
-<p>
-    Get your hair ready for the Rwandan experience at affordable prices. 
-</p>
-
-</div>
-               </div>
-                 
+        <div class="beauty">
+            <H1>
+                BEAUTICIAN
+            </H1>
+            <div class="container">
+            <div class="item">
+                <img src="{{url_for('static', filename='images/user.png')}}" alt="">
+                <p>
+                    Create service profile
+                </p>
+            </div>
+            <div class="item">
+                <img src="{{url_for('static', filename='images/upload.png')}}" alt="">
+                <p>
+                    Upload service images
+                </p>
+            </div>
+            <div class="item">
+                <img src="{{url_for('static', filename='images/booking.png')}}" alt="">
+                <p>
+                    Get a booking
+                </p>
+            </div>
+            <div class="item">
+                <img src="{{url_for('static', filename='images/pay.png')}}" alt="">
+                <p>
+                    Get paid
+                </p>
             </div>
         </div>
         </div>
+    </section>
 
-        <div class="seller">
-            <img  class="top"  src="{{url_for('static', filename='images/barbershop-1612726_1920.jpg')}}" alt="">
-            <div class="header">
-                <h1 >
-                    For the Skilled Artist
-                </h1>
-                <div>
-                    <p>
-                       Ubwiza is a place to showcase your work and get clients
-                    </p>
-                    <h2>
-                        "Secure the bag"
-                    </h2>
-                </div>
-                </div>
-            <nav>
-     <a href="{{url_for('login')}}">LOGIN</a>
-            <a href="{{url_for('sellers')}}">SELL</a>
-            
-            <a href="{{url_for('register')}}">SIGNUP</a>
-        </nav>
-        <div>
- 
-   
-    </main>
-    <div class="me">
-        <h2>
-            Ubwiza was created with 2 people in mind. 
-        </h2>
-        <h4>
-        Connect through Ubwiza and find your perfect match. 
-        </h4>
-        <p>
-            Disclaimer : Not all users here are trustworthy. We debug code, not people.  
-        </p>
-   
-        
-    </div>
+    </article>
+</main> 
+
+<footer>
+    <nav>
+        <ul>
+            <li>
+            <a href="{{url_for('home')}}">Privacy Policy</a>
+            </li>
+            <li> <a href="{{url_for('home')}}">Terms of Service</a></li>
+            <li><a href="{{url_for('home')}}">Join Our Network</a></li>
+        </ul>
+    </nav>
+
+</footer>
 </body>
 </html>
