@@ -111,20 +111,14 @@ footer nav {
 
 
     }
-
-    .services {
-        display: flex;
-        flex-direction: row;
-        column-gap: 2%;
-        width: 100%;
+.who {
+    display:block;
     }
 
-    .product {
-        flex-basis: 22%;
+.client, .beauty {
+    width: 100%;
+    
 
-    }
+}
 
-    .product-image {
-        width: 25px;
-    }
 }
